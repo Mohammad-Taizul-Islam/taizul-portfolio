@@ -6,11 +6,11 @@ import { Button } from '@/components/ui/button'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCurrentSection } from '../../lib/strore/navigationSlice'
 import { RootState } from '../../lib/strore/store'
-import { translations } from '@/lib/translations'
+import { translations } from '../../lib/translations'
 import { Link } from 'react-scroll';
 
 
-export function HomeSection({ t }: { t2: typeof translations['en'] }) {
+export function HomeSection({ t }: { t: typeof translations['en'] }) {
   const dispatch = useDispatch()
   const currentLanguage = useSelector((state: RootState) => state.language.currentLanguage)
    const t2 = translations[currentLanguage]

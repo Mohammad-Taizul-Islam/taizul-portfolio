@@ -11,7 +11,7 @@ import { ServicesSection } from '@/components/sections/services'
 import { TestimonialsSection } from '@/components/sections/testimonials'
 import { ContactSection } from '@/components/sections/contact'
 import { Toaster } from '@/components/ui/toaster'
-import { RootState } from '@/lib/store/store'
+import { RootState } from '../lib/strore/store'
 import { translations } from '@/lib/translations'
 
 export default function Home() {
