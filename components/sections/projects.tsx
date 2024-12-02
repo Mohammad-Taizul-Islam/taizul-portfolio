@@ -7,25 +7,53 @@ import Image from 'next/image'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Github, ExternalLink } from 'lucide-react'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/lib/strore/store'
+import { translations } from '@/lib/translations'
 
 const projects = [
   {
-    title: 'Project 1',
-    description: 'A modern web application built with Next.js and TypeScript',
-    image: '/placeholder.svg',
-    github: 'https://github.com',
-    demo: 'https://example.com',
-    tags: ['Next.js', 'TypeScript', 'Tailwind CSS']
+    title: 'E-commerce App',
+    description: 'ecommerceDescription',
+    image: '/e-commerce.png',
+    github: 'https://github.com/yourusername/ecommerce-app',
+    demo: 'https://ecommerce-app-demo.vercel.app',
+    tags: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'MongoDB', 'Prisma', 'Vercel']
   },
-  // Add more projects...
+  {
+    title: 'Club App',
+    description: 'clubAppDescription',
+    image: '/club-app.webp',
+    github: 'https://github.com/yourusername/club-app',
+    demo: 'https://club-app-demo.vercel.app',
+    tags: ['React', 'Next.js', 'Tailwind CSS', 'Firebase', 'Vercel']
+  },
+  {
+    title: 'Educational Website',
+    description: 'educationalWebsiteDescription',
+    image: '/educational-website.webp',
+    github: 'https://github.com/yourusername/educational-website',
+    demo: 'https://educational-website-demo.vercel.app',
+    tags: ['Next.js', 'Tailwind CSS', 'GraphQL', 'Strapi CMS', 'Vercel']
+  },
+  {
+    title: 'Portfolio Website',
+    description: 'portfolioDescription',
+    image: '/portfolio-website.webp',
+    github: 'https://github.com/yourusername/portfolio-website',
+    demo: 'https://portfolio-website-demo.vercel.app',
+    tags: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'Redux Toolkit', 'Vercel']
+  }
 ]
 
-export function ProjectsSection({ t }: { t: typeof translations['en'] }) {
+export function ProjectsSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
+  const currentLanguage = useSelector((state: RootState) => state.language.currentLanguage)
+  const t = translations[currentLanguage]
 
   return (
-    <section id="projects" className="h-screen py-20 flex items-center">
+    <section id="projects" className="min-h-screen flex items-center justify-center py-20 snap-start">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
@@ -41,7 +69,7 @@ export function ProjectsSection({ t }: { t: typeof translations['en'] }) {
           >
             {t.projects}
           </motion.h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
             {projects.map((project, index) => (
               <motion.div
                 key={project.title}
@@ -50,7 +78,7 @@ export function ProjectsSection({ t }: { t: typeof translations['en'] }) {
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
               >
                 <Card className="overflow-hidden group">
-                  <div className="relative h-48">
+                  <div className="relative h-32">
                     <Image
                       src={project.image}
                       alt={project.title}
@@ -60,7 +88,7 @@ export function ProjectsSection({ t }: { t: typeof translations['en'] }) {
                   </div>
                   <CardHeader>
                     <CardTitle>{project.title}</CardTitle>
-                    <CardDescription>{project.description}</CardDescription>
+                    <CardDescription>{[project.description]}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2 mb-4">

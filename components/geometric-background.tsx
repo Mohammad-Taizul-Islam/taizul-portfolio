@@ -1,25 +1,50 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
-export function GeometricBackground() {
-  const shapes = Array.from({ length: 20 }).map((_, i) => ({
+type ShapeType = 'hexagon' | 'triangle' | 'square'
+
+interface Shape {
+  id: number
+  type: ShapeType
+  position: {
+    x: number
+    y: number
+  }
+  size: number
+  rotationSpeed: number
+}
+
+const generateShapes = (): Shape[] => 
+  Array.from({ length: 20 }, (_, i) => ({
     id: i,
-    type: ['hexagon', 'triangle', 'square'][Math.floor(Math.random() * 3)],
+    type: ['hexagon', 'triangle', 'square'][Math.floor(Math.random() * 3)] as ShapeType,
     position: {
       x: Math.random() * 100,
       y: Math.random() * 100
     },
-    size: 20 + Math.random() * 40
+    size: 40 + Math.random() * 60,
+    rotationSpeed: 10 + Math.random() * 20
   }))
+
+export function GeometricBackground() {
+  const [shapes, setShapes] = useState<Shape[]>([])
+
+  useEffect(() => {
+    setShapes(generateShapes())
+  }, [])
+
+  if (shapes.length === 0) {
+    return null // or a loading placeholder
+  }
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden">
       {shapes.map((shape) => (
         <motion.div
           key={shape.id}
-          className="absolute opacity-10"
+          className="absolute"
           initial={{
             left: `${shape.position.x}%`,
             top: `${shape.position.y}%`,
@@ -29,17 +54,16 @@ export function GeometricBackground() {
           animate={{
             rotate: 360,
             scale: [1, 1.2, 1],
-            opacity: [0.1, 0.2, 0.1]
           }}
           transition={{
-            duration: 20 + Math.random() * 10,
+            duration: shape.rotationSpeed,
             repeat: Infinity,
             ease: "linear"
           }}
         >
           {shape.type === 'hexagon' && (
             <div 
-              className="bg-primary/10" 
+              className="bg-primary/10 backdrop-blur-md border border-primary/20 shadow-lg"
               style={{
                 width: shape.size,
                 height: shape.size,
@@ -49,7 +73,7 @@ export function GeometricBackground() {
           )}
           {shape.type === 'triangle' && (
             <div 
-              className="bg-primary/10"
+              className="bg-primary/10 backdrop-blur-md border border-primary/20 shadow-lg"
               style={{
                 width: shape.size,
                 height: shape.size,
@@ -59,7 +83,7 @@ export function GeometricBackground() {
           )}
           {shape.type === 'square' && (
             <div 
-              className="bg-primary/10"
+              className="bg-primary/10 backdrop-blur-md border border-primary/20 shadow-lg rounded-md"
               style={{
                 width: shape.size,
                 height: shape.size

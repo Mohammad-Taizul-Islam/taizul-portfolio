@@ -4,6 +4,9 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Image from 'next/image'
+import { translations } from '@/lib/translations'
+
+
 
 export function AboutSection({ t }: { t: typeof translations['en'] }) {
   const ref = useRef(null)
@@ -21,7 +24,7 @@ export function AboutSection({ t }: { t: typeof translations['en'] }) {
         >
           <div className="relative h-[400px] rounded-lg overflow-hidden">
             <Image
-              src="/placeholder.svg"
+              src="/taizul.jpg"
               alt="About me"
               fill
               className="object-cover"

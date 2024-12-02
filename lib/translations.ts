@@ -2,6 +2,7 @@ export const translations = {
   en: {
     home: "Home",
     about: "About Me",
+    getResume:'Get Resume',
     skills: "Skills & Technologies",
     projects: "Projects",
     services: "Services",
@@ -37,6 +38,7 @@ export const translations = {
   es: {
     home: "Inicio",
     about: "Sobre Mí",
+    getResume: "Obtener CV",
     skills: "Habilidades y Tecnologías",
     projects: "Proyectos",
     services: "Servicios",
@@ -72,6 +74,7 @@ export const translations = {
   fr: {
     home: "Accueil",
     about: "À Propos",
+    getResume: "Obtenir CV",
     skills: "Compétences et Technologies",
     projects: "Projets",
     services: "Services",
