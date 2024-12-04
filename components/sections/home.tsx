@@ -96,8 +96,8 @@ export function HomeSection() {
             <Button
               size="lg"
               variant="outline"
-              className="group text-white"
-              onClick={() => window.open('/path-to-your-resume.pdf', '_blank')}
+              className="group"
+              onClick={() => window.open('/Taizul Islam-FullStack-Web-Developer.pdf', '_blank')}
             >
               {t.getResume}
               <motion.div
