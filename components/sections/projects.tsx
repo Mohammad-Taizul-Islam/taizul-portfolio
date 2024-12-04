@@ -17,11 +17,11 @@ export function ProjectsSection() {
 
   const projects = [
     {
-      title: 'E-commerce App',
-      description: 'ecommerceDescription',
-      image: '/e-commerce.png',
-      github: 'https://github.com/yourusername/ecommerce-app',
-      demo: 'https://ecommerce-app-demo.vercel.app',
+      title: 'Techfolio',
+      description: 'portfolioDescription',
+      image: '/modern-portfolio.png',
+      github: 'https://github.com/Mohammad-Taizul-Islam/taizul-portfolio',
+      demo: 'https://taizul-portfolio.vercel.app/',
       tags: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'MongoDB', 'Prisma', 'Vercel']
     },
     {
