@@ -6,35 +6,40 @@ import { useInView } from 'framer-motion'
 import Image from 'next/image'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Quote } from 'lucide-react'
+import { translations } from '@/lib/translations'
 
-const testimonials = [
-  {
-    name: 'John Doe',
-    role: 'CEO at TechCorp',
-    content: 'Amazing work! The attention to detail and quality of delivery exceeded our expectations.',
-    image: '/placeholder.svg'
-  },
-  {
-    name: 'Jane Smith',
-    role: 'CTO at StartupX',
-    content: 'Excellent communication and project management. Would definitely work together again.',
-    image: '/placeholder.svg'
-  },
-  {
-    name: 'Mike Johnson',
-    role: 'Product Manager',
-    content: 'The final product was exactly what we needed. Great understanding of our requirements.',
-    image: '/placeholder.svg'
-  },
-  {
-    name: 'Sarah Williams',
-    role: 'Design Lead',
-    content: 'Incredible attention to design details and user experience. A pleasure to work with.',
-    image: '/placeholder.svg'
-  }
-]
+
 
 export function TestimonialsSection({ t }: { t: typeof translations['en'] }) {
+
+
+  const testimonials = [
+    {
+      name: 'John Doe',
+      role: 'CEO at TechCorp',
+      content: 'Amazing work! The attention to detail and quality of delivery exceeded our expectations.',
+      image: '/placeholder.svg'
+    },
+    {
+      name: 'Jane Smith',
+      role: 'CTO at StartupX',
+      content: 'Excellent communication and project management. Would definitely work together again.',
+      image: '/placeholder.svg'
+    },
+    {
+      name: 'Mike Johnson',
+      role: 'Product Manager',
+      content: 'The final product was exactly what we needed. Great understanding of our requirements.',
+      image: '/placeholder.svg'
+    },
+    {
+      name: 'Sarah Williams',
+      role: 'Design Lead',
+      content: 'Incredible attention to design details and user experience. A pleasure to work with.',
+      image: '/placeholder.svg'
+    }
+  ]
+  
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
   const containerRef = useRef<HTMLDivElement>(null)

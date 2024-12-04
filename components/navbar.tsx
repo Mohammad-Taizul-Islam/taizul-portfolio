@@ -254,26 +254,28 @@ import { cn } from '@/lib/utils'
 import { useScrollSpy } from '@/hooks/use-scroll-spy'
 import { AnimatedLogo } from './animated-logo'
 
-const navItems = [
-  { id: 'home', icon: '🏠' },
-  { id: 'about', icon: '👤' },
-  { id: 'skills', icon: '💪' },
-  { id: 'projects', icon: '💼' },
-  { id: 'services', icon: '🛠' },
-  { id: 'testimonials', icon: '💬' },
-  { id: 'contact', icon: '📧' },
-] as const
-
-const languages = [
-  { code: 'en', label: 'English' },
-  { code: 'es', label: 'Español' },
-  { code: 'fr', label: 'Français' },
-] as const
 
 export function Navbar() {
+
+  
+  const navItems = [
+    { id: 'home', icon: '🏠' },
+    { id: 'about', icon: '👤' },
+    { id: 'skills', icon: '💪' },
+    { id: 'projects', icon: '💼' },
+    { id: 'services', icon: '🛠' },
+    { id: 'testimonials', icon: '💬' },
+    { id: 'contact', icon: '📧' },
+  ] as const
+  
+  const languages = [
+    { code: 'en', label: 'English' },
+    { code: 'es', label: 'Español' },
+    { code: 'fr', label: 'Français' },
+  ] as const
+  
   const dispatch = useDispatch()
   const { isNavOpen } = useSelector((state: RootState) => state.navigation)
-  const darkMode = useSelector((state: RootState) => state.theme.darkMode)
   const currentLanguage = useSelector((state: RootState) => state.language.currentLanguage)
   const t = translations[currentLanguage]
   

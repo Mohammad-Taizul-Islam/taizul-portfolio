@@ -11,42 +11,44 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@/lib/strore/store'
 import { translations } from '@/lib/translations'
 
-const projects = [
-  {
-    title: 'E-commerce App',
-    description: 'ecommerceDescription',
-    image: '/e-commerce.png',
-    github: 'https://github.com/yourusername/ecommerce-app',
-    demo: 'https://ecommerce-app-demo.vercel.app',
-    tags: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'MongoDB', 'Prisma', 'Vercel']
-  },
-  {
-    title: 'Club App',
-    description: 'clubAppDescription',
-    image: '/club-app.webp',
-    github: 'https://github.com/yourusername/club-app',
-    demo: 'https://club-app-demo.vercel.app',
-    tags: ['React', 'Next.js', 'Tailwind CSS', 'Firebase', 'Vercel']
-  },
-  {
-    title: 'Educational Website',
-    description: 'educationalWebsiteDescription',
-    image: '/educational-website.webp',
-    github: 'https://github.com/yourusername/educational-website',
-    demo: 'https://educational-website-demo.vercel.app',
-    tags: ['Next.js', 'Tailwind CSS', 'GraphQL', 'Strapi CMS', 'Vercel']
-  },
-  {
-    title: 'Portfolio Website',
-    description: 'portfolioDescription',
-    image: '/portfolio-website.webp',
-    github: 'https://github.com/yourusername/portfolio-website',
-    demo: 'https://portfolio-website-demo.vercel.app',
-    tags: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'Redux Toolkit', 'Vercel']
-  }
-]
+
 
 export function ProjectsSection() {
+
+  const projects = [
+    {
+      title: 'E-commerce App',
+      description: 'ecommerceDescription',
+      image: '/e-commerce.png',
+      github: 'https://github.com/yourusername/ecommerce-app',
+      demo: 'https://ecommerce-app-demo.vercel.app',
+      tags: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'MongoDB', 'Prisma', 'Vercel']
+    },
+    {
+      title: 'Club App',
+      description: 'clubAppDescription',
+      image: '/club-app.webp',
+      github: 'https://github.com/yourusername/club-app',
+      demo: 'https://club-app-demo.vercel.app',
+      tags: ['React', 'Next.js', 'Tailwind CSS', 'Firebase', 'Vercel']
+    },
+    {
+      title: 'Educational Website',
+      description: 'educationalWebsiteDescription',
+      image: '/educational-website.webp',
+      github: 'https://github.com/yourusername/educational-website',
+      demo: 'https://educational-website-demo.vercel.app',
+      tags: ['Next.js', 'Tailwind CSS', 'GraphQL', 'Strapi CMS', 'Vercel']
+    },
+    {
+      title: 'Portfolio Website',
+      description: 'portfolioDescription',
+      image: '/portfolio-website.webp',
+      github: 'https://github.com/yourusername/portfolio-website',
+      demo: 'https://portfolio-website-demo.vercel.app',
+      tags: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'Redux Toolkit', 'Vercel']
+    }
+  ]
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
   const currentLanguage = useSelector((state: RootState) => state.language.currentLanguage)

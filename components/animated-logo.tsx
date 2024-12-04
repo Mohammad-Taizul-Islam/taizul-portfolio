@@ -1,25 +1,28 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
 export function AnimatedLogo() {
   const pathVariants = {
     hidden: {
       pathLength: 0,
-      opacity: 0
+      opacity: 0,
     },
     visible: {
       pathLength: 1,
       opacity: 1,
       transition: {
-        duration: 2,
-        ease: "easeInOut",
-        repeat: Infinity,
-        repeatType: "reverse",
-        repeatDelay: 0.5
-      }
-    }
-  }
+        pathLength: {
+          duration: 2,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatType: "reverse",
+          repeatDelay: 0.5,
+        },
+        opacity: { duration: 0.5 },
+      },
+    },
+  };
 
   return (
     <motion.svg
@@ -39,6 +42,6 @@ export function AnimatedLogo() {
         variants={pathVariants}
       />
     </motion.svg>
-  )
+  );
 }
 

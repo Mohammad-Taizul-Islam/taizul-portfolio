@@ -9,9 +9,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { RootState } from '@/lib/store/store'
-import { toggleTheme } from '@/lib/store/themeSlice'
-import { setLanguage } from '@/lib/store/languageSlice'
+import { RootState } from '@/lib/strore/store'
+import { toggleTheme } from '@/lib/strore/themeSlice'
+import { setLanguage } from '@/lib/strore/languageSlice'
 import { motion } from 'framer-motion'
 import { translations } from '@/lib/translations'
 
@@ -23,7 +23,6 @@ const languages = [
 
 export function ThemeLanguageSwitcher() {
   const dispatch = useDispatch()
-  const darkMode = useSelector((state: RootState) => state.theme.darkMode)
   const currentLanguage = useSelector((state: RootState) => state.language.currentLanguage)
   const t = translations[currentLanguage]
 

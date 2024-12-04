@@ -3,14 +3,17 @@
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, Twitter } from 'lucide-react'
 
+
+export function SocialLinks() {
+
+
+
 const socialLinks = [
   { icon: Github, href: 'https://github.com', label: 'GitHub' },
   { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
   { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
   { icon: Mail, href: 'mailto:hello@example.com', label: 'Email' }
 ]
-
-export function SocialLinks() {
   return (
     <motion.div 
       className="fixed right-6 top-1/2 -translate-y-1/2 flex flex-col gap-6 z-50"

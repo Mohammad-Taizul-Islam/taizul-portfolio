@@ -9,16 +9,18 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Button } from '@/components/ui/button'
 import { Globe } from 'lucide-react'
-import { RootState } from '@/lib/store/store'
-import { setLanguage } from '@/lib/store/languageSlice'
+import { RootState } from '@/lib/strore/store'
+import { setLanguage } from '@/lib/strore/languageSlice'
 
-const languages = [
-  { code: 'en', label: 'English' },
-  { code: 'es', label: 'Español' },
-  { code: 'fr', label: 'Français' },
-] as const
 
 export function LanguageSwitcher() {
+  
+  const languages = [
+    { code: 'en', label: 'English' },
+    { code: 'es', label: 'Español' },
+    { code: 'fr', label: 'Français' },
+  ] as const
+  
   const dispatch = useDispatch()
   const currentLanguage = useSelector((state: RootState) => state.language.currentLanguage)
 

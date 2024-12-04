@@ -3,8 +3,8 @@
 import { Moon, Sun } from 'lucide-react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button } from '@/components/ui/button'
-import { RootState } from '@/lib/store/store'
-import { toggleTheme } from '@/lib/store/themeSlice'
+import { RootState } from '@/lib/strore/store'
+import { toggleTheme } from '@/lib/strore/themeSlice'
 
 export function ThemeSwitcher() {
   const dispatch = useDispatch()

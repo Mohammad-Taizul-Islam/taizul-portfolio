@@ -2,8 +2,7 @@
 
 import { useSelector } from 'react-redux'
 import { motion } from 'framer-motion'
-import { RootState } from '@/lib/store/store'
-
+import { RootState } from '@/lib/strore/store'
 export function GradientBackground() {
   const { darkMode, gradient } = useSelector((state: RootState) => state.theme)
 

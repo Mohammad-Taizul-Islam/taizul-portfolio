@@ -55,11 +55,11 @@ export function AboutSection({ t }: { t: typeof translations['en'] }) {
             >
               <div>
                 <h3 className="font-bold mb-2">{t.location}</h3>
-                <p className="text-muted-foreground">New York, USA</p>
+                <p className="text-muted-foreground">Dhaka, Bangladesh</p>
               </div>
               <div>
                 <h3 className="font-bold mb-2">{t.experience}</h3>
-                <p className="text-muted-foreground">5+ Years</p>
+                <p className="text-muted-foreground">2+ Years</p>
               </div>
             </motion.div>
           </div>

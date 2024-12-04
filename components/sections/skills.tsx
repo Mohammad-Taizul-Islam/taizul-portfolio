@@ -5,6 +5,13 @@ import { useRef } from 'react'
 import { useInView } from 'framer-motion'
 import { FaReact, FaNodeJs, FaDatabase, FaMobile } from 'react-icons/fa'
 import { SiTypescript, SiTailwindcss, SiNextdotjs, SiRedux } from 'react-icons/si'
+import { translations } from '@/lib/translations'
+
+
+export function SkillsSection({ t }: { t: typeof translations['en'] }) {
+
+
+
 
 const skills = [
   { name: 'React', icon: FaReact, color: '#61DAFB' },
@@ -17,7 +24,6 @@ const skills = [
   { name: 'Mobile Dev', icon: FaMobile, color: '#A4C639' },
 ]
 
-export function SkillsSection({ t }: { t: typeof translations['en'] }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
   const containerRef = useRef<HTMLDivElement>(null)
