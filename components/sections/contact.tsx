@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
-import { Loader2 } from 'lucide-react'
+import { Loader2, Mail, CheckCircle } from 'lucide-react'
 import { sendEmail } from '@/app/actions'
 import { useToast } from '../../hooks/use-toast'
 import { translations } from '@/lib/translations'
@@ -18,28 +18,34 @@ export function ContactSection({ t }: { t: typeof translations['en'] }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
   const [isPending, setIsPending] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false)
   const { toast } = useToast()
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setIsPending(true)
+    setIsSuccess(false)
     
     const formData = new FormData(event.currentTarget)
     
     try {
       const result = await sendEmail(formData)
-      if ('error' in result) {
+      if (result.error) {
         toast({
           variant: "destructive",
           title: "Error",
           description: result.error
         })
       } else {
+        setIsSuccess(true)
         toast({
           title: "Success",
-          description: t.messageSent
+          description: result.message || t.messageSent
         })
         event.currentTarget.reset()
+        
+        // Reset success state after 5 seconds
+        setTimeout(() => setIsSuccess(false), 5000)
       }
     } catch {
       toast({
@@ -53,25 +59,31 @@ export function ContactSection({ t }: { t: typeof translations['en'] }) {
   }
 
   return (
-    <section id="contact" className="h-screen py-20 flex items-center">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="min-h-screen py-12 sm:py-16 md:py-20 flex items-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 100 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.5 }}
+          className="space-y-8 sm:space-y-12"
         >
           <motion.h2
-            className="text-3xl font-bold text-center mb-12"
-            initial={{ opacity: 0, y: -50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-center"
+            initial={{ opacity: 0, y: -20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             {t.contact}
           </motion.h2>
-          <Card className="max-w-xl mx-auto">
+          
+          <div className="max-w-2xl mx-auto">
+            <Card className="shadow-lg">
             <CardHeader>
+              <div className="flex items-center gap-3 mb-2">
+                <Mail className="w-6 h-6 text-primary" />
               <CardTitle>{t.contactMe}</CardTitle>
+              </div>
               <CardDescription>
                 {t.contactDescription}
               </CardDescription>
@@ -86,7 +98,9 @@ export function ContactSection({ t }: { t: typeof translations['en'] }) {
                     id="name"
                     name="name"
                     required
+                    disabled={isPending}
                     placeholder={t.yourName}
+                    className="transition-all duration-200 focus:ring-2 focus:ring-primary/20"
                   />
                 </div>
                 <div>
@@ -98,7 +112,9 @@ export function ContactSection({ t }: { t: typeof translations['en'] }) {
                     name="email"
                     type="email"
                     required
+                    disabled={isPending}
                     placeholder={t.yourEmail}
+                    className="transition-all duration-200 focus:ring-2 focus:ring-primary/20"
                   />
                 </div>
                 <div>
@@ -109,17 +125,26 @@ export function ContactSection({ t }: { t: typeof translations['en'] }) {
                     id="message"
                     name="message"
                     required
+                    disabled={isPending}
                     placeholder={t.yourMessage}
                     rows={5}
+                    className="transition-all duration-200 focus:ring-2 focus:ring-primary/20 resize-none"
                   />
                 </div>
-                <Button type="submit" className="w-full" disabled={isPending}>
+                <Button 
+                  type="submit" 
+                  className="w-full transition-all duration-200" 
+                  disabled={isPending}
+                  variant={isSuccess ? "default" : "default"}
+                >
                   {isPending && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
-                  {t.sendMessage}
+                  {isSuccess && <CheckCircle className="w-4 h-4 mr-2" />}
+                  {isPending ? 'Sending...' : isSuccess ? 'Message Sent!' : t.sendMessage}
                 </Button>
               </form>
             </CardContent>
           </Card>
+          </div>
         </motion.div>
       </div>
     </section>
