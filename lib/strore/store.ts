@@ -12,6 +12,10 @@ interface StoredState {
 
 // Load state from localStorage if available
 const loadState = (): StoredState | undefined => {
+  if (typeof window === 'undefined') {
+    return undefined
+  }
+
   try {
     const serializedState = localStorage.getItem('portfolio-state')
     if (serializedState === null) {
@@ -26,6 +30,10 @@ const loadState = (): StoredState | undefined => {
 
 // Save state to localStorage
 const saveState = (state: RootState) => {
+  if (typeof window === 'undefined') {
+    return
+  }
+
   try {
     const serializedState = JSON.stringify(state)
     localStorage.setItem('portfolio-state', serializedState)

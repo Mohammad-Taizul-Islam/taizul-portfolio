@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { Loader2, Mail, CheckCircle } from 'lucide-react'
-import { sendEmail } from '@/app/actions'
+import { submitContactForm } from '@/app/actions'
 import { useToast } from '../../hooks/use-toast'
 import { translations } from '@/lib/translations'
 
@@ -29,7 +29,7 @@ export function ContactSection({ t }: { t: typeof translations['en'] }) {
     const formData = new FormData(event.currentTarget)
     
     try {
-      const result = await sendEmail(formData)
+      const result = await submitContactForm(formData)
       if (result.error) {
         toast({
           variant: "destructive",
@@ -43,8 +43,7 @@ export function ContactSection({ t }: { t: typeof translations['en'] }) {
           description: result.message || t.messageSent
         })
         event.currentTarget.reset()
-        
-        // Reset success state after 5 seconds
+
         setTimeout(() => setIsSuccess(false), 5000)
       }
     } catch {
