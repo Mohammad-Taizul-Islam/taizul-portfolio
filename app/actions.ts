@@ -94,8 +94,6 @@ This message was sent from your portfolio contact form.`,
 
     return {
       success: true,
-      message:
-        "Thank you for reaching out! Your message has been received and I will get back to you soon.",
     };
 
     // Original Supabase code (commented out):
