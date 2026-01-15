@@ -1,16 +1,14 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { useRef } from 'react'
-import Image from 'next/image'
-import { translations } from '@/lib/translations'
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import Image from "next/image";
+import { translations } from "@/lib/translations";
 
-
-
-export function AboutSection({ t }: { t: typeof translations['en'] }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
+export function AboutSection({ t }: { t: (typeof translations)["en"] }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   return (
     <section id="about" className="h-screen py-20 flex items-center">
@@ -25,7 +23,7 @@ export function AboutSection({ t }: { t: typeof translations['en'] }) {
           <div className="relative h-[400px] rounded-lg overflow-hidden">
             <Image
               src="/taizul.jpg"
-              alt="About me"
+              alt="Taizul Islam - Full Stack Developer Profile"
               fill
               className="object-cover"
             />
@@ -66,6 +64,5 @@ export function AboutSection({ t }: { t: typeof translations['en'] }) {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
-
