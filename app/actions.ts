@@ -84,12 +84,22 @@ This message was sent from your portfolio contact form.`,
         console.log("Email sent successfully to admin via Gmail");
       } catch (emailError) {
         console.error("Error sending email:", emailError);
-        // Don't fail the submission if email fails, just log it
+        return {
+          error: `Failed to send email. Please check your Gmail App Password and configuration.`,
+        };
       }
     } else {
-      console.warn(
-        "Gmail not configured. Set GMAIL_USER, GMAIL_APP_PASSWORD, and ADMIN_EMAIL environment variables."
-      );
+      const missing = [];
+      if (!process.env.GMAIL_USER) missing.push("GMAIL_USER");
+      if (!process.env.GMAIL_APP_PASSWORD) missing.push("GMAIL_APP_PASSWORD");
+      if (!process.env.ADMIN_EMAIL) missing.push("ADMIN_EMAIL");
+
+      console.warn(`Gmail configuration missing: ${missing.join(", ")}`);
+      return {
+        error: `Email service is not configured on the server. Missing: ${missing.join(
+          ", "
+        )}`,
+      };
     }
 
     return {

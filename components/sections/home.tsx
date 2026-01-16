@@ -34,7 +34,7 @@ const containerVariants = {
   },
 }
 
-const titles = ["Full Stack Developer", "Mobile App Developer"]
+const titles = ["Full Stack Developer", "Mobile App Developer","Data Scientist"]
 
 export function HomeSection() {
   const dispatch = useDispatch()
