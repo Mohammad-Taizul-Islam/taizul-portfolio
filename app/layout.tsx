@@ -4,6 +4,9 @@ import { SocialLinks } from "@/components/social-links";
 import { Toaster } from "@/components/ui/toaster";
 import { Providers } from "./providers";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
@@ -16,50 +19,63 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://techpholio.io"),
   title: {
-    default: "Taizul Islam | Full Stack Developer",
-    template: "%s | Taizul Islam",
+    default:
+      "Taixul Islam | JavaScript Full Stack Developer  | Mobile App Developer | MERN Stack Developer",
+    template: "%s | Taixul Islam",
   },
   description:
-    "Taizul Islam is a passionate Full Stack Developer and Mobile App Developer with 2+ years of experience in building modern web and mobile applications using React, Next.js, and Node.js.",
+    "Full Stack Developer specializing in React, Next.js, Node.js. MERN stack and java and python. Mobile App Developer. Building modern web applications with clean code.",
   keywords: [
-    "Full Stack Developer",
-    "Web Developer",
-    "Mobile App Developer",
-    "React Developer",
+    "Full Stack Developer portfolio",
+    "React Developer portfolio",
     "Next.js Developer",
-    "Portfolio",
-    "Taizul Islam",
-    "Software Engineer",
+    "JavaScript Developer",
+    "Web Developer portfolio",
+    "Frontend Developer",
+    "UI Developer",
+    "TypeScript Developer",
+    "Node.js Developer",
+    "MERN Stack Developer",
+    "Freelance Web Developer",
+    "Web Developer in [Dhaka]",
+    "React Developer [Dhaka]",
+    "Hire Web Developer [Dhaka]",
   ],
-  authors: [
-    { name: "Taizul Islam", url: "https://taizul-portfolio.vercel.app" },
-  ],
-  creator: "Taizul Islam",
+  authors: [{ name: "Taixul Islam", url: "https://techpholio.io" }],
+  creator: "Taixul Islam",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://taizul-portfolio.vercel.app",
-    title: "Taizul Islam | Full Stack Developer",
+    url: "https://techpholio.io",
+    title: "Taixul Islam | Full Stack Developer",
     description:
-      "Explore the portfolio of Taizul Islam, a Full Stack Developer specialized in building high-performance web and mobile applications.",
-    siteName: "Taizul Islam Portfolio",
+      "Full Stack Developer portfolio showcasing React, Next.js projects",
+    siteName: "Taixul Islam Portfolio",
     images: [
       {
-        url: "/modern-portfolio.png",
+        url: "https://techpholio.io/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Taizul Islam Portfolio Preview",
+        alt: "Taixul Islam Portfolio Preview",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Taizul Islam | Full Stack Developer",
+    title: "Taixul Islam | Full Stack Developer",
     description:
-      "Explore the portfolio of Taizul Islam, a Full Stack Developer specialized in building high-performance web and mobile applications.",
+      "Explore the portfolio of Taixul Islam, a Full Stack Developer specialized in building high-performance web and mobile applications.",
     images: ["/modern-portfolio.png"],
-    creator: "@taizul_islam",
+    creator: "@taixul_islam",
+    site: "https://portpholio.io",
+  },
+  verification: {
+    google: "your-google-verification-code", // Get from Google Search Console
+  },
+  alternates: {
+    canonical: "https://techpholio.io",
   },
   robots: {
     index: true,
@@ -93,6 +109,8 @@ export default function RootLayout({
           <GeometricBackground />
           <SocialLinks />
           {children}
+          <Analytics />
+          <SpeedInsights />
         </Providers>
       </body>
     </html>

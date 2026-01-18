@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: "/private/",
+      disallow: ["/api/", "/admin/", "/_next/static/", "/private/"],
     },
-    sitemap: "https://taizul-portfolio.vercel.app/sitemap.xml",
+    sitemap: "https://techpholio.io/sitemap.xml",
   };
 }

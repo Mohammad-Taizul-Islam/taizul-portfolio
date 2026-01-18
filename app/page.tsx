@@ -40,15 +40,15 @@ export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Taizul Islam",
+    name: "Taixul Islam",
     jobTitle: "Full Stack Developer",
-    url: "https://taizul-portfolio.vercel.app",
+    url: "https://techpholio.io",
     sameAs: [
       "https://github.com/Mohammad-Taizul-Islam",
       "https://linkedin.com/in/taizul-islam",
     ],
     description:
-      "Full Stack Developer and Mobile App Developer with 2+ years of experience.",
+      "Full Stack Developer and Mobile App Developer with 10 + years of experience.",
   };
 
   return (
